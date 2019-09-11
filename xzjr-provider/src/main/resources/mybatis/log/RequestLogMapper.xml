@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.springcloud.provider.common.interceptor.dao.RequestLogDao">
+
+    <insert id="insert" parameterType="com.springcloud.provider.common.interceptor.bean.RequestLog">
+        INSERT INTO `xzjr`.`request_log` (
+            `method`,
+            `request_url`,
+            `content`,
+            `result`,
+            `time_used`,
+            `user_name`,
+            `create_time`,
+            `update_time`
+        )
+        VALUES
+            (
+                #{method},
+                #{requestUrl},
+                #{content},
+                #{result},
+                #{timeUsed},
+                #{userName},
+                #{createTime},
+                #{updateTime}
+            );
+    </insert>
+
+</mapper>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.springcloud.provider.rear.dao.LoginDao">
+    
+    <sql id="rear_list">
+            `USERNAME`,
+            `PASSWORD`,
+            `STATUS`,
+            `MOBILE`,
+            `SEX`,
+            `EMAIL`,
+            `TRUE_NAME`
+    </sql>
+    
+    <select id="rearLogin" parameterType="com.springcloud.provider.common.dto.UserDto" resultType="com.springcloud.provider.rear.entity.User">
+        select
+        <include refid="rear_list"/>
+        from `xzjr`.`sys_rear_user` ruser
+        <where>
+            ruser.status = 1
+            <if test="null != username and '' != username">
+                and ruser.username = #{username}
+            </if>
+            <if test="null != password and '' != password">
+                and ruser.password = #{password}
+            </if>
+        </where>
+    </select>
+    
+    <insert id="rearRegister" parameterType="com.springcloud.provider.common.dto.UserDto">
+        insert into `xzjr`.`sys_rear_user` (
+            `username`,
+            `password`,
+            `email`,
+            `status`
+        )
+        values
+            (
+                #{username},
+                #{password},
+                #{email},
+                #{status}
+            );
+    </insert>
+
+    <select id="verifyUser" parameterType="com.springcloud.provider.common.dto.UserDto" resultType="com.springcloud.provider.common.dto.UserDto">
+        select
+        <include refid="rear_list"/>
+        from `xzjr`.`sys_rear_user` ruser
+        <where>
+            ruser.status = 1
+            <if test="null != mobile and '' != mobile">
+                and ruser.mobile = #{mobile}
+            </if>
+            <if test="null != trueName and '' != trueName">
+                and ruser.true_name = #{trueName}
+            </if>
+        </where>
+    </select>
+
+    <update id="passwordReset" parameterType="com.springcloud.provider.common.dto.UserDto">
+        UPDATE `xzjr`.`sys_rear_user`
+        SET
+         `password` = #{password}
+        WHERE
+            (`username` = #{username});
+    </update>
+    
+</mapper>
