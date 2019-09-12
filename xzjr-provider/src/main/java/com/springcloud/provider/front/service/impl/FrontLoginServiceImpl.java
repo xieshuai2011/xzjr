@@ -1,10 +1,10 @@
-package com.springcloud.provider.rear.service.impl;
+package com.springcloud.provider.front.service.impl;
 
 import com.springcloud.provider.common.constants.Constants;
 import com.springcloud.provider.common.dto.UserDto;
 import com.springcloud.provider.common.utils.StringUtil;
-import com.springcloud.provider.rear.dao.LoginDao;
-import com.springcloud.provider.rear.service.LoginService;
+import com.springcloud.provider.front.dao.FrontLoginDao;
+import com.springcloud.provider.front.service.FrontLoginService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,12 +22,12 @@ import java.util.List;
  * @date：2019/8/21 16:50
  */
 @Service
-public class LoginServiceImpl implements LoginService {
+public class FrontLoginServiceImpl implements FrontLoginService {
 
-  Logger logger = LoggerFactory.getLogger(LoginServiceImpl.class);
+  Logger logger = LoggerFactory.getLogger(FrontLoginServiceImpl.class);
 
   @Autowired
-  LoginDao loginDao;
+  FrontLoginDao loginDao;
 
   /**
    * 发送者邮箱
@@ -39,15 +39,15 @@ public class LoginServiceImpl implements LoginService {
   JavaMailSender mailSender;
 
   @Override
-  public Object rearLogin(UserDto userDto) {
-    List<UserDto> rearUsers = loginDao.rearLogin(userDto);
-    return rearUsers;
+  public Object frontLogin(UserDto userDto) {
+    List<UserDto> frontUsers = loginDao.frontLogin(userDto);
+    return frontUsers;
   }
 
   @Override
-  public void rearRegister(UserDto userDto) {
+  public void frontRegister(UserDto userDto) {
     userDto.setStatus(Constants.IS.YES);
-    loginDao.rearRegister(userDto);
+    loginDao.frontRegister(userDto);
   }
 
   @Override
@@ -58,7 +58,7 @@ public class LoginServiceImpl implements LoginService {
       //加密
       user.get(0).setPassword(password);
       loginDao.passwordReset(user.get(0));
-      String title = "XZJR*后端用户密码重置成功";
+      String title = "XZJR*前端用户密码重置成功";
       String content = "【"+userDto.getMobile()+"】"+"重置后密码为随机六位【"+password+"】,请记得及时更改密码……";
       sendMail(title,content,userDto.getEmail());
       return true;

@@ -1,4 +1,4 @@
-package com.springcloud.provider.rear.service;
+package com.springcloud.provider.front.service;
 
 import com.springcloud.provider.common.dto.UserDto;
 
@@ -7,20 +7,20 @@ import com.springcloud.provider.common.dto.UserDto;
  * @description：
  * @date：2019/8/21 16:47
  */
-public interface LoginService {
+public interface FrontLoginService {
 
   /**
    * 后台登录
    * @param userDto
    * @return
    */
-  Object rearLogin(UserDto userDto);
+  Object frontLogin(UserDto userDto);
 
   /**
    * 后台注册
    * @param userDto
    */
-  void rearRegister(UserDto userDto);
+  void frontRegister(UserDto userDto);
 
   /**
    * 密码重置

@@ -1,7 +1,6 @@
 package com.springcloud.provider.rear.dao;
 
 import com.springcloud.provider.common.dto.UserDto;
-import com.springcloud.provider.rear.entity.User;
 
 import java.util.List;
 
@@ -10,7 +9,7 @@ import java.util.List;
  * @description：
  * @date：2019/8/21 16:52
  */
-public interface LoginDao {
+public interface RearLoginDao {
   /**
    * 后台登录
    * @param userDto

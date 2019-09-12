@@ -1,4 +1,4 @@
-package com.springcloud.provider.rear.entity;
+package com.springcloud.provider.common.entity;
 
 import java.io.Serializable;
 

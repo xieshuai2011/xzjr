@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 
-<mapper namespace="com.springcloud.provider.rear.dao.RearLoginDao">
+<mapper namespace="com.springcloud.provider.front.dao.FrontLoginDao">
     
     <sql id="rear_list">
             `USERNAME`,
@@ -13,7 +13,7 @@
             `TRUE_NAME`
     </sql>
     
-    <select id="rearLogin" parameterType="com.springcloud.provider.common.dto.UserDto" resultType="com.springcloud.provider.common.entity.User">
+    <select id="frontLogin" parameterType="com.springcloud.provider.common.dto.UserDto" resultType="com.springcloud.provider.common.entity.User">
         select
         <include refid="rear_list"/>
         from `xzjr`.`sys_rear_user` ruser
@@ -28,7 +28,7 @@
         </where>
     </select>
     
-    <insert id="rearRegister" parameterType="com.springcloud.provider.common.dto.UserDto">
+    <insert id="frontRegister" parameterType="com.springcloud.provider.common.dto.UserDto">
         insert into `xzjr`.`sys_rear_user` (
             `username`,
             `password`,
