@@ -1,7 +1,7 @@
-package com.springcloud.consumer.rear.controller;
+package com.springcloud.consumer.front.controller;
 
 import com.springcloud.consumer.common.dto.UserDto;
-import com.springcloud.consumer.rear.service.LoginService;
+import com.springcloud.consumer.front.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,15 +13,15 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * @date：2019/8/20 16:14
  */
 @Controller
-@RequestMapping(value = "rear/login")
+@RequestMapping(value = "front/login")
 public class LoginController {
 
   @Autowired
   private LoginService loginService;
 
-    @RequestMapping(value = "rearLogin")
-  public String welcome(){
-    return "rear/user/login";
+    @RequestMapping(value = "frontLogin")
+  public String frontLogin(){
+    return "front/user/login";
   }
 
   @RequestMapping("logon")
