@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.springcloud.provider.twodata.dao.DataOneDao">
+
+    <select id="queryDataOne" resultType="com.springcloud.provider.twodata.dto.DataOne" >
+        SELECT * FROM xzjr.dataone
+    </select>
+
+</mapper>
